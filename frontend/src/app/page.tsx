@@ -1,7 +1,6 @@
 'use client';
 
 import { useAuth, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
-import { generateKey } from 'crypto';
 import { useState, useEffect } from 'react';
 
 interface HistoryItem {

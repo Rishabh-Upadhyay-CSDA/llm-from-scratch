@@ -1,6 +1,8 @@
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import './globals.css';
 
+export const dynamic = 'force-dynamic'; // Ensures Next.js does not attempt static prerendering for auth-dependent routes
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
@@ -17,7 +19,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </SignInButton>
               </SignedOut>
               <SignedIn>
-                {/* Fixed: Removed afterSignOutUrl prop */}
                 <UserButton />
               </SignedIn>
             </div>

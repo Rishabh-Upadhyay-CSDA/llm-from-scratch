@@ -58,6 +58,12 @@ BLOCK_SIZE = ModelConfig.BLOCK_SIZE if hasattr(ModelConfig, "BLOCK_SIZE") else 1
 
 tokenizer = Tokenizer.from_file("tokenizer/tokenizer.json")
 
+VOCAB_SIZE = tokenizer.get_vocab_size()
+D_MODEL = 128
+N_LAYER = 4
+N_HEAD = 4
+BLOCK_SIZE = 128
+
 model = LLMFromScratch(
     vocab_size=VOCAB_SIZE,
     d_model=D_MODEL,
