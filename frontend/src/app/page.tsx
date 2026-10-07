@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useAuth, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import { useAuth, Show, SignInButton } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -75,7 +75,7 @@ export default function Home() {
 
   return (
     <main className="p-6 max-w-4xl mx-auto space-y-4">
-      <SignedOut>
+      <Show when="signed-out">
         <div className="text-center py-10">
           <p className="mb-4 text-slate-300">Please sign in to access the LLM generator.</p>
           <SignInButton mode="modal">
@@ -84,9 +84,9 @@ export default function Home() {
             </button>
           </SignInButton>
         </div>
-      </SignedOut>
+      </Show>
 
-      <SignedIn>
+      <Show when="signed-in">
         <div className="p-4 bg-slate-950 border border-slate-800 rounded font-mono min-h-[150px] whitespace-pre-wrap">
           {generation || 'Output will stream here...'}
         </div>
@@ -103,7 +103,7 @@ export default function Home() {
             {loading ? 'Streaming...' : 'Generate'}
           </button>
         </form>
-      </SignedIn>
+      </Show>
     </main>
   );
 }

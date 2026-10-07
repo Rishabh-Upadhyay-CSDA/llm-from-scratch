@@ -1,20 +1,20 @@
 'use client';
 
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { Show, SignInButton, UserButton } from '@clerk/nextjs';
 
 export default function HeaderAuth() {
   return (
     <div>
-      <SignedOut>
+      <Show when="signed-out">
         <SignInButton mode="modal">
           <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 font-medium text-sm rounded-lg transition-colors text-white">
             Sign In
           </button>
         </SignInButton>
-      </SignedOut>
-      <SignedIn>
+      </Show>
+      <Show when="signed-in">
         <UserButton />
-      </SignedIn>
+      </Show>
     </div>
   );
 }
