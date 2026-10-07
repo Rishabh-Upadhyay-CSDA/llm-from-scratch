@@ -1,6 +1,8 @@
 'use client';
 
-import { useAuth, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+export const dynamic = 'force-dynamic';
+
+import { useAuth, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 
 interface HistoryItem {
@@ -12,8 +14,21 @@ interface HistoryItem {
 }
 
 export default function Home() {
-  const { getToken, isSignedIn } = useAuth();
-  
+  const { getToken, isSignedIn, isLoaded } = useAuth();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+      setMounted(true);
+    }, []);
+
+    if (!mounted || !isLoaded) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-slate-900 text-slate-400">
+          Loading LLM Playground...
+        </div>
+      );
+    }
+
   const [prompt, setPrompt] = useState('');
   const [generation, setGeneration] = useState('');
   const [loading, setLoading] = useState(false);
