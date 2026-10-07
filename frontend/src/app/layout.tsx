@@ -17,7 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </SignInButton>
               </SignedOut>
               <SignedIn>
-                <UserButton afterSignOutUrl="/" />
+                {/* Fixed: Removed afterSignOutUrl prop */}
+                <UserButton />
               </SignedIn>
             </div>
           </header>

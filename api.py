@@ -18,14 +18,12 @@ from tokenizers import Tokenizer
 
 from database import engine, get_db, Base
 from models import PromptHistory, ModelConfig
+from model.transformer import LLMFromScratch
 
-# Initialize database tables in Neon
 Base.metadata.create_all(bind=engine)
 
-# Initialize FastAPI App
 app = FastAPI(title="LLM Playground API")
 
-# Configure CORS for Next.js frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
