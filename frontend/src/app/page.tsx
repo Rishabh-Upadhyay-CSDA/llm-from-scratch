@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useAuth, Show, SignInButton } from '@clerk/nextjs';
+import { useAuth, Show, SignInButton, SignUpButton } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -77,12 +77,19 @@ export default function Home() {
     <main className="p-6 max-w-4xl mx-auto space-y-4">
       <Show when="signed-out">
         <div className="text-center py-10">
-          <p className="mb-4 text-slate-300">Please sign in to access the LLM generator.</p>
-          <SignInButton mode="modal">
-            <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 font-medium text-sm rounded-lg transition-colors text-white">
-              Sign In
-            </button>
-          </SignInButton>
+          <p className="mb-4 text-slate-300">Please sign in or create an account to access the LLM generator.</p>
+    <div className="flex justify-center gap-4">
+      <SignInButton mode="modal">
+        <button className="px-4 py-2 bg-slate-800 hover:bg-slate-700 font-medium text-sm rounded-lg transition-colors text-white border border-slate-700">
+          Sign In
+        </button>
+      </SignInButton>
+      <SignUpButton mode="modal">
+        <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 font-medium text-sm rounded-lg transition-colors text-white">
+          Sign Up
+        </button>
+      </SignUpButton>
+    </div>
         </div>
       </Show>
 
