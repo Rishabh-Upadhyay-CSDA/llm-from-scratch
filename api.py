@@ -72,7 +72,14 @@ model = LLMFromScratch(
     block_size=BLOCK_SIZE
 ).to(DEVICE)
 
-model.load_state_dict(torch.load("checkpoints/model.pt", map_location=DEVICE))
+MODEL_WEIGHTS_PATH = os.getenv("MODEL_WEIGHTS_PATH")
+
+if os.path.exists(MODEL_WEIGHTS_PATH):
+    model.load_state_dict(torch.load(MODEL_WEIGHTS_PATH, map_location=DEVICE))
+    print(f"Successfully loaded model checkpoint from {MODEL_WEIGHTS_PATH}")
+else:
+    print(f"Warning: Model file not found at '{MODEL_WEIGHTS_PATH}'. Running with initialized weights.")
+
 model.eval()
 
 # Dummy model container check fallback if loading directly
