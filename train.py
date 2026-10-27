@@ -7,11 +7,11 @@ VOCAB_SIZE = 1000
 D_MODEL = 128
 N_LAYER = 4
 N_HEAD = 4
-BLOCK_SIZE = 64
-BATCH_SIZE = 4
-LEARNING_RATE = 1e-3
-EPOCHS = 15
-DEVICE = "cpu"
+BLOCK_SIZE = 128
+BATCH_SIZE = 32
+LEARNING_RATE = 3e-4
+EPOCHS = 200
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def train():
     print(f"Using device: {DEVICE}")

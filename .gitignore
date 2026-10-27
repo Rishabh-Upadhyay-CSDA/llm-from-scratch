@@ -44,12 +44,10 @@ wheels/
 # Machine Learning & Checkpoints
 # ==========================================
 # Ignore large model binary weights & checkpoints
-*.pt
 *.pth
 *.bin
 *.onnx
 *.safetensors
-checkpoints/
 models_cache/
 
 # Ignore large raw datasets if applicable
