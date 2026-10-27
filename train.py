@@ -4,10 +4,10 @@ from model.dataset import get_dataloader
 from model.transformer import LLMFromScratch
 
 VOCAB_SIZE = 1000
-D_MODEL = 128
-N_LAYER = 4
-N_HEAD = 4
-BLOCK_SIZE = 128
+D_MODEL = 256
+N_LAYER = 6
+N_HEAD = 8
+BLOCK_SIZE = 256
 BATCH_SIZE = 32
 LEARNING_RATE = 3e-4
 EPOCHS = 200

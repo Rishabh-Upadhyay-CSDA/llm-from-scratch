@@ -1,7 +1,7 @@
 import os
 from tokenizers import Tokenizer, models, trainers, pre_tokenizers, decoders
 
-def train_bpe_tokenizer(corpus_path: str, vocab_size: int = 5000, save_path: str = "tokenizer/tokenizer.json"):
+def train_bpe_tokenizer(corpus_path: str, vocab_size: int = 1000, save_path: str = "tokenizer/tokenizer.json"):
     if not os.path.exists(corpus_path):
         raise FileNotFoundError(f"Corpus file not found at {corpus_path}. Please place your training text there.")
 

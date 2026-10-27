@@ -15,4 +15,4 @@ class PromptHistory(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class ModelConfig:
-    BLOCK_SIZE = 128
+    BLOCK_SIZE = 256

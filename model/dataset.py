@@ -3,7 +3,7 @@ from torch.utils.data import Dataset, DataLoader
 from tokenizers import Tokenizer
 
 class TextDataset(Dataset):
-    def __init__(self, text_path: str, tokenizer_path: str, block_size: int = 64):
+    def __init__(self, text_path: str, tokenizer_path: str, block_size: int = 256):
         self.tokenizer = Tokenizer.from_file(tokenizer_path)
         self.block_size = block_size
         
@@ -30,7 +30,7 @@ class TextDataset(Dataset):
         y = torch.tensor(chunk[1:], dtype=torch.long)
         return x, y
 
-def get_dataloader(text_path: str, tokenizer_path: str, batch_size: int = 4, block_size: int = 64):
+def get_dataloader(text_path: str, tokenizer_path: str, batch_size: int = 32, block_size: int = 256):
     dataset = TextDataset(text_path, tokenizer_path, block_size)
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return loader

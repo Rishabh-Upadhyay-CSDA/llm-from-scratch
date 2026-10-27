@@ -54,15 +54,15 @@ def get_current_user_id(authorization: str = Header(...)) -> str:
 # 2. Model & Tokenizer Initialization
 # -----------------------------------------------------------------------------
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-BLOCK_SIZE = ModelConfig.BLOCK_SIZE if hasattr(ModelConfig, "BLOCK_SIZE") else 128
+BLOCK_SIZE = ModelConfig.BLOCK_SIZE if hasattr(ModelConfig, "BLOCK_SIZE") else 256
 
 tokenizer = Tokenizer.from_file("tokenizer/tokenizer.json")
 
 VOCAB_SIZE = tokenizer.get_vocab_size()
-D_MODEL = 128
-N_LAYER = 4
-N_HEAD = 4
-BLOCK_SIZE = 128
+D_MODEL = 256
+N_LAYER = 6
+N_HEAD = 8
+BLOCK_SIZE = 256
 
 model = LLMFromScratch(
     vocab_size=VOCAB_SIZE,
